@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/a11ytables)](https://CRAN.R-project.org/package=octopusR)
+status](https://www.r-pkg.org/badges/version/octopusR)](https://CRAN.R-project.org/package=octopusR)
 [![R-CMD-check](https://github.com/Moohan/octopusR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Moohan/octopusR/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/Moohan/octopusR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Moohan/octopusR?branch=main)
@@ -15,12 +15,18 @@ coverage](https://codecov.io/gh/Moohan/octopusR/branch/main/graph/badge.svg)](ht
 octopusR is an R package that provides access to the [Octopus Energy
 API](https://developer.octopus.energy/docs/api/). With octopusR, you can
 easily retrieve data from the Octopus Energy API and use it in your R
-projects.
+projects, or Shiny dashboards.
 
 ## Installation
 
-octopusR is not yet available on CRAN, so must be installed from GitHub,
-to install, you can use the `devtools` package:
+octopusR can be installed from CRAN.
+
+``` r
+install.packages("octopusR")
+```
+
+If you would like the development version, it can be installed from
+GitHub, using the `devtools` package:
 
 ``` r
 # Install devtools if needed
@@ -30,11 +36,11 @@ devtools::install_github("moohan/octopusR")
 
 ## Usage
 
-To use most function in octopusR, you will need an API key from Octopus
+To use most functions in octopusR, you will need an API key from Octopus
 Energy, you can find this on the [developer
 dashboard](https://octopus.energy/dashboard/developer/). Once you have
-your API key, you can use the `set_api_key()` function to interactively
-input and store the API key for the session:
+your API key, you can use `set_api_key()` to interactively input and
+store the API key for the session:
 
 ``` r
 library(octopusR)
@@ -44,7 +50,7 @@ set_api_key()
 ```
 
 Once you have authenticated with the API, you may also want to set your
-meter-point details.
+electric and/or gas meter details.
 
 ``` r
 # Set details for your electricity meter
@@ -67,14 +73,14 @@ energy_usage <- get_consumption(meter_type = "elec")
 # View the data
 head(energy_usage)
 #> # A tibble: 6 × 3
-#>   consumption interval_start      interval_end       
-#>         <dbl> <dttm>              <dttm>             
-#> 1       0.096 2023-01-15 23:30:00 2023-01-16 00:00:00
-#> 2       0.097 2023-01-15 23:00:00 2023-01-15 23:30:00
-#> 3       0.097 2023-01-15 22:30:00 2023-01-15 23:00:00
-#> 4       0.097 2023-01-15 22:00:00 2023-01-15 22:30:00
-#> 5       0.098 2023-01-15 21:30:00 2023-01-15 22:00:00
-#> 6       0.098 2023-01-15 21:00:00 2023-01-15 21:30:00
+#>   consumption interval_start       interval_end        
+#>         <dbl> <chr>                <chr>               
+#> 1       0.096 2023-01-15T23:30:00Z 2023-01-16T00:00:00Z
+#> 2       0.097 2023-01-15T23:00:00Z 2023-01-15T23:30:00Z
+#> 3       0.097 2023-01-15T22:30:00Z 2023-01-15T23:00:00Z
+#> 4       0.097 2023-01-15T22:00:00Z 2023-01-15T22:30:00Z
+#> 5       0.098 2023-01-15T21:30:00Z 2023-01-15T22:00:00Z
+#> 6       0.098 2023-01-15T21:00:00Z 2023-01-15T21:30:00Z
 ```
 
 For more information and examples, see the [package

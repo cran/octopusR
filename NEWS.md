@@ -1,8 +1,10 @@
+# octopusR 1.0.1
+
+* Fixed a bug where date-times with a time zone offset would not parse (#19)
+
 # octopusR 1.0.0
 
-# octopusR 0.2.0
-
-# octopusR 0.1.0
+* First release of OctopusR to CRAN
 
 # octopusR 0.0.0.9000
 
